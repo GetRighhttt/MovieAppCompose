@@ -41,7 +41,7 @@ fun DetailScreen(navController: NavController, movieData: String?) {
                 ),
                 title = {
                     Text(
-                        text = "${movieData.toString()} Details",
+                        text = "Movie Details",
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         maxLines = 1,

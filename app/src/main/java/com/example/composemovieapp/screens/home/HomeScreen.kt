@@ -56,7 +56,7 @@ fun HomeScreen(navController: NavController) {
                 ),
                 title = {
                     Text(
-                        text = "Compose Movie App",
+                        text = "Most Popular Movies",
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         maxLines = 1,
