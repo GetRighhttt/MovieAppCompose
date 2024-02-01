@@ -82,7 +82,8 @@ fun HomeScreen(navController: NavController) {
                         scope.launch {
                             snackbarHostState.showSnackbar(
                                 "Add button clicked!",
-                                duration = SnackbarDuration.Short
+                                duration = SnackbarDuration.Short,
+                                withDismissAction = true
                             )
                         }
                     }) {

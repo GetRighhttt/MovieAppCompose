@@ -71,7 +71,8 @@ fun DetailScreen(navController: NavController, movieData: String?) {
                         scope.launch {
                             snackbarHostState.showSnackbar(
                                 message = "Menu Button Clicked!",
-                                duration = SnackbarDuration.Short
+                                duration = SnackbarDuration.Short,
+                                actionLabel = "Exit"
                             )
                         }
                     }) {
