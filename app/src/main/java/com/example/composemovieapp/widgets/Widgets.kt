@@ -98,6 +98,7 @@ fun MovieRow(movie: MovieList, onItemClick: (String) -> Unit = {}) {
                                     style = SpanStyle(
                                         color = MaterialTheme.colorScheme.onBackground,
                                         fontSize = 13.sp,
+                                        fontWeight = FontWeight.Normal,
                                         fontStyle = FontStyle.Italic
                                     )
                                 ) {
