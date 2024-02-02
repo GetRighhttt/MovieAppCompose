@@ -50,7 +50,7 @@ fun MovieRow(movie: MovieList, onItemClick: (String) -> Unit = {}) {
             .padding(6.dp)
             .fillMaxWidth()
 //            .height(120.dp)
-            .clickable { onItemClick(movie.title) },
+            .clickable { onItemClick(movie.id) },
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),
         elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
     ) {
