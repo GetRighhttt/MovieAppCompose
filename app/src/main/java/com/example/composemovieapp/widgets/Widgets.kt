@@ -9,6 +9,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -136,6 +139,52 @@ fun MovieRow(movie: MovieList, onItemClick: (String) -> Unit = {}) {
                         .size(25.dp)
                         .clickable { expanded = !expanded },
                     tint = MaterialTheme.colorScheme.onBackground
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun HorizontalScrollableView(modifier: Modifier = Modifier, movieList: List<String>) {
+    LazyRow {
+        items(movieList) { image ->
+            Card(
+                modifier = modifier
+                    .padding(12.dp)
+                    .size(140.dp),
+                elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
+            ) {
+                Image(
+                    painter = rememberImagePainter(data = image,
+                        builder = {
+                            crossfade(true)
+                            transformations(CircleCropTransformation())
+                        }),
+                    contentDescription = "Images"
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun VerticalScrollableView(modifier: Modifier = Modifier, movieList: List<String>) {
+    LazyColumn {
+        items(movieList) { image ->
+            Card(
+                modifier = modifier
+                    .padding(12.dp)
+                    .size(140.dp),
+                elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
+            ) {
+                Image(
+                    painter = rememberImagePainter(data = image,
+                        builder = {
+                            crossfade(true)
+                            transformations(CircleCropTransformation())
+                        }),
+                    contentDescription = "Images"
                 )
             }
         }

@@ -1,7 +1,6 @@
 package com.example.composemovieapp.screens.detail
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -9,14 +8,9 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -40,11 +34,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import coil.compose.rememberImagePainter
-import coil.transform.CircleCropTransformation
 import com.example.composemovieapp.MyApp
 import com.example.composemovieapp.model.getMovies
+import com.example.composemovieapp.widgets.HorizontalScrollableView
 import com.example.composemovieapp.widgets.MovieRow
+import com.example.composemovieapp.widgets.VerticalScrollableView
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -112,25 +106,8 @@ fun DetailScreen(navController: NavController, movieId: String?) {
                 Spacer(modifier = Modifier.height(8.dp))
                 Divider(color = MaterialTheme.colorScheme.onBackground)
                 Text(text = "Movie Images")
-                LazyRow {
-                    items(filteredMovieList[0].images) { image ->
-                        Card(
-                            modifier = Modifier
-                                .padding(12.dp)
-                                .size(140.dp),
-                            elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
-                        ) {
-                            Image(
-                                painter = rememberImagePainter(data = image,
-                                    builder = {
-                                    crossfade(true)
-                                    transformations(CircleCropTransformation())
-                                }),
-                                contentDescription = "Images"
-                            )
-                        }
-                    }
-                }
+                HorizontalScrollableView(movieList = filteredMovieList[0].images)
+                VerticalScrollableView(movieList = filteredMovieList[0].images)
             }
         }
     }
