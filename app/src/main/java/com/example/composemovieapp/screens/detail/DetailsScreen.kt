@@ -105,9 +105,6 @@ fun DetailScreen(navController: NavController, movieId: String?) {
                 MovieRow(movie = filteredMovieList.first())
                 Spacer(modifier = Modifier.height(8.dp))
                 Divider(color = MaterialTheme.colorScheme.onBackground)
-                Text(text = "Movie Images")
-                HorizontalScrollableView(movieList = filteredMovieList[0].images)
-                VerticalScrollableView(movieList = filteredMovieList[0].images)
             }
         }
     }
