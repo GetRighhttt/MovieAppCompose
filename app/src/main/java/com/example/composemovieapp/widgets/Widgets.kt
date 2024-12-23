@@ -11,6 +11,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -52,7 +55,6 @@ fun MovieRow(movie: MovieList, onItemClick: (String) -> Unit = {}) {
         modifier = Modifier
             .padding(6.dp)
             .fillMaxWidth()
-//            .height(120.dp)
             .clickable { onItemClick(movie.id) },
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),
         elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
@@ -170,7 +172,7 @@ fun HorizontalScrollableView(modifier: Modifier = Modifier, movieList: List<Stri
 
 @Composable
 fun VerticalScrollableView(modifier: Modifier = Modifier, movieList: List<String>) {
-    LazyColumn {
+    LazyVerticalGrid(GridCells.Fixed(2)) {
         items(movieList) { image ->
             Card(
                 modifier = modifier
